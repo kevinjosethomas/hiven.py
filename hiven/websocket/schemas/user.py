@@ -1,0 +1,10 @@
+class User:
+    id: str
+    username: str
+    flags: int
+    name: str
+    icon: str
+    header: str
+    bio: str
+    website: str
+    location: str
