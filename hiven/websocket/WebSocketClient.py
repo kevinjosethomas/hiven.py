@@ -1,15 +1,39 @@
 import json
 import asyncio
 import aiohttp
+from pprint import pprint
 
 from .types import User
 
 
 class WebSocketClient:
     def __init__(self, session: aiohttp.ClientSession, client):
-
         self._session = session
         self._client = client
+
+    async def init_state(self, data: dict):
+        """Initialize bot's state"""
+
+        # pprint(data)
+
+        self._client.user = User(
+            username=data["user"].get("username"),
+            name=data["user"].get("name"),
+            id=data["user"].get("id"),
+            flags=data["user"].get("flags"),
+            icon=data["user"].get("icon"),
+            header=data["user"].get("header"),
+        )
+
+    async def server_websocket_handler(self, msg: dict):
+        """Handles websocket messages that arrive from the server"""
+
+        print(msg["e"])
+
+        if msg["e"] == "INIT_STATE":
+            await self.init_state(msg["d"])
+        elif msg["e"] == "HOUSE_JOIN":
+            print(msg["d"].get("name"))
 
     async def connect(self, token: str, bot: bool = True):
         """Connects to the Hiven WebSocket Swarm"""
@@ -22,14 +46,13 @@ class WebSocketClient:
         while True:
             msg = await self._ws.receive()
 
-            print(msg.type)
-
             if msg.type == aiohttp.WSMsgType.TEXT:
 
                 message = json.loads(msg.data)
-                print(message)
 
-                if message["op"] == 1:
+                if message["op"] == 0:
+                    await self.server_websocket_handler(message)
+                elif message["op"] == 1:
                     await self._ws.send_json(
                         {"op": 2, "d": {"token": ("Bot " if bot else "") + self._token}}
                     )
