@@ -8,3 +8,4 @@ class User:
     bio: str
     website: str
     location: str
+    application: str
