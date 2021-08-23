@@ -1,3 +1,4 @@
+from .emoji import Emoji
 from ..schemas import Room as RoomSchema
 
 
@@ -6,7 +7,7 @@ class Room:
         self.id = room.get("id")
         self.house_id = room.get("house_id")
         self.type = room.get("type")
-        self.emoji = room.get("emoji")
+        self.emoji = Emoji(room.get("emoji"))
         self.name = room.get("name")
         self.position = room.get("position")
         self.last_message_id = room.get("last_message_id")
