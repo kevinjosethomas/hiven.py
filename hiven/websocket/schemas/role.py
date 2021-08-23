@@ -1,0 +1,9 @@
+class Role:
+    id: str
+    house_id: str
+    name: str
+    position: int
+    level: int
+    color: str
+    allow: int
+    deny: int
