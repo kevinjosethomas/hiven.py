@@ -30,3 +30,4 @@ from .entity import Entity
 from .member import Member
 from .channel_emoji import ChannelEmoji
 from .resource_pointer import ResourcePointer
+from .default_permission_override import DefaultPermissionOverride
