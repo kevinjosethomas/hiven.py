@@ -1,5 +1,5 @@
-from .resource_pointer import ResourcePointer
 from ..schemas import Entity as EntitySchema
+from .resource_pointer import ResourcePointer
 
 
 class Entity:
@@ -11,5 +11,5 @@ class Entity:
         self.type = entity.get("type")
         self.resource_pointers = []
 
-        for resource_pointer in entity["resource_pointer"]:
+        for resource_pointer in entity["resource_pointers"]:
             self.resource_pointers.append(ResourcePointer(resource_pointer))
