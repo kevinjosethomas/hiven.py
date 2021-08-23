@@ -16,14 +16,7 @@ class WebSocketClient:
 
         # pprint(data)
 
-        self._client.user = User(
-            username=data["user"].get("username"),
-            name=data["user"].get("name"),
-            id=data["user"].get("id"),
-            flags=data["user"].get("flags"),
-            icon=data["user"].get("icon"),
-            header=data["user"].get("header"),
-        )
+        self._client.user = User(data["user"])
 
     async def server_websocket_handler(self, msg: dict):
         """Handles websocket messages that arrive from the server"""
