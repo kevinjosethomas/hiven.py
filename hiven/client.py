@@ -10,6 +10,7 @@ class Client:
         self._loop = asyncio.get_event_loop()
 
         self.user = None
+        self.houses = []
 
     def run(self, token: str):
         """Runs the client with the provided token"""
