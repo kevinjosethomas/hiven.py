@@ -1,5 +1,8 @@
+from typing import Dict
+
 from .channel_emoji import ChannelEmoji
 from .permission_override import PermissionOverride
+from .default_permission_override import DefaultPermissionOverride
 
 
 class Room:
@@ -11,4 +14,5 @@ class Room:
     position: int
     last_message_id: str
     description: str
-    default_permission_override: PermissionOverride
+    permission_overrides: Dict[str, PermissionOverride]
+    default_permission_override: DefaultPermissionOverride
