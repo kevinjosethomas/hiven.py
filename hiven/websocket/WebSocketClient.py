@@ -26,11 +26,8 @@ class WebSocketClient:
         if msg["e"] == "INIT_STATE":
             await self.init_state(msg["d"])
         elif msg["e"] == "HOUSE_JOIN":
-            parsed_house = msg["d"]
-            for index, room in enumerate(parsed_house["rooms"]):
-                parsed_house["rooms"][index] = Room(room)
-
-            pprint(parsed_house)
+            pprint(msg["d"])
+            self._client.houses.append(House(msg["d"]))
 
     async def connect(self, token: str, bot: bool = True):
         """Connects to the Hiven WebSocket Swarm"""
