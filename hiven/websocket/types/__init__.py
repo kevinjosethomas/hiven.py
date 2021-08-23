@@ -23,6 +23,8 @@ SOFTWARE.
 """
 
 from .user import User
+from .role import Role
 from .room import Room
 from .house import House
+from .member import Member
 from .channel_emoji import ChannelEmoji
