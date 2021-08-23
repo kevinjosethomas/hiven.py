@@ -1,5 +1,6 @@
 from .channel_emoji import ChannelEmoji
 from ..schemas import Room as RoomSchema
+from .permission_override import PermissionOverride
 from .default_permission_override import DefaultPermissionOverride
 
 
@@ -18,3 +19,8 @@ class Room:
             if room.get("default_permission_override")
             else None
         )
+        self.permission_overrides = {}
+
+        if room.get("permission_overrides"):
+            for id, permission_override in room.get("permission_overrides").items():
+                self.permission_overrides[id] = PermissionOverride(permission_override)
