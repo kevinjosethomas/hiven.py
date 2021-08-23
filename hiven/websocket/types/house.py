@@ -1,3 +1,4 @@
+from .room import Room
 from ..schemas import House as HouseSchema
 
 
@@ -10,4 +11,7 @@ class House:
         self.banner = house.get("banner")
         self.default_permissions = house.get("default_permissions")
         self.members = house.get("members")
-        self.rooms = house.get("rooms")
+        self.rooms = []
+
+        for room in house["rooms"]:
+            self.rooms.append(Room(room))
