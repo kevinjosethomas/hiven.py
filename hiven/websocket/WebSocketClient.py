@@ -26,7 +26,6 @@ class WebSocketClient:
         if msg["e"] == "INIT_STATE":
             await self.init_state(msg["d"])
         elif msg["e"] == "HOUSE_JOIN":
-            pprint(msg["d"])
             self._client.houses.append(House(msg["d"]))
 
     async def connect(self, token: str, bot: bool = True):
