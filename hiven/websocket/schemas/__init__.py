@@ -25,7 +25,7 @@ SOFTWARE.
 from .role import Role
 from .room import Room
 from .user import User
-from .emoji import Emoji
 from .house import House
 from .member import Member
+from .channel_emoji import ChannelEmoji
 from .permission_override import PermissionOverride

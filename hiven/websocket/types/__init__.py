@@ -25,4 +25,4 @@ SOFTWARE.
 from .user import User
 from .room import Room
 from .house import House
-from .emoji import Emoji
+from .channel_emoji import ChannelEmoji

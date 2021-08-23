@@ -1,3 +1,3 @@
-class Emoji:
+class ChannelEmoji:
     type: int
     data: str
