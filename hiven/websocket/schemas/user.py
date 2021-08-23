@@ -1,8 +1,8 @@
 class User:
     id: str
     username: str
-    flags: int
     name: str
+    flags: int
     icon: str
     header: str
     bio: str

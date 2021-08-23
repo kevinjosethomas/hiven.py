@@ -1,10 +1,15 @@
+from ..schemas import User
+
+
 class User:
-    def __init__(
-        self, username: str, name: str, id: str, flags: str, icon: str = None, header: str = None
-    ):
-        self.username = username
-        self.name = name
-        self.id = id
-        self.icon = icon
-        self.header = header
-        self.flags = flags
+    def __init__(self, user: User):
+        self.id = user.get("id")
+        self.username = user.get("username")
+        self.name = user.get("name")
+        self.flags = user.get("flags")
+        self.icon = user.get("icon")
+        self.header = user.get("header")
+        self.bio = user.get("bio")
+        self.website = user.get("website")
+        self.location = user.get("location")
+        self.application = user.get("application")
