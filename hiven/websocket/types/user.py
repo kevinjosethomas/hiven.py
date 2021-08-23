@@ -1,8 +1,8 @@
-from ..schemas import User
+from ..schemas import User as UserSchema
 
 
 class User:
-    def __init__(self, user: User):
+    def __init__(self, user: UserSchema):
         self.id = user.get("id")
         self.username = user.get("username")
         self.name = user.get("name")

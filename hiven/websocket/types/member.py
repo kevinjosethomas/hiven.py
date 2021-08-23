@@ -1,9 +1,9 @@
 from .user import User
-from ..schemas import Member
+from ..schemas import Member as MemberSchema
 
 
 class Member:
-    def __init__(self, member: Member):
+    def __init__(self, member: MemberSchema):
         self.id = member.get("id")
         self.user_id = member.get("user_id")
         self.house_id = member.get("house_id")
