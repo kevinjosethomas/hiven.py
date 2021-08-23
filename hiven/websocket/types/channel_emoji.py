@@ -3,5 +3,5 @@ from ..schemas import ChannelEmoji
 
 class ChannelEmoji:
     def __init__(self, emoji: ChannelEmoji):
-        self.type = emoji.type
-        self.data = emoji.data
+        self.type = emoji.get("type")
+        self.data = emoji.get("data")
