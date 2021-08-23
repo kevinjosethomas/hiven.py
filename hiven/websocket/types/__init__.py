@@ -23,3 +23,4 @@ SOFTWARE.
 """
 
 from .user import *
+from .house import *
