@@ -28,3 +28,4 @@ from .room import Room
 from .house import House
 from .member import Member
 from .channel_emoji import ChannelEmoji
+from .resource_pointer import ResourcePointer
