@@ -26,6 +26,8 @@ from .role import Role
 from .room import Room
 from .user import User
 from .house import House
+from .entity import Entity
 from .member import Member
 from .channel_emoji import ChannelEmoji
+from .resource_pointer import ResourcePointer
 from .permission_override import PermissionOverride

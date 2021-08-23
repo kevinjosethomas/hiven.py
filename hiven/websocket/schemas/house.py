@@ -2,6 +2,7 @@ from typing import List
 
 from .role import Role
 from .room import Room
+from .entity import Entity
 from .member import Member
 
 
@@ -14,3 +15,4 @@ class House:
     rooms: List[Room]
     roles: List[Role]
     members: List[Member]
+    entities: List[Entity]
