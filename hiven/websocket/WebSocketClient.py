@@ -3,7 +3,7 @@ import asyncio
 import aiohttp
 from pprint import pprint
 
-from .types import User
+from .types import User, House, Room
 
 
 class WebSocketClient:
@@ -33,7 +33,11 @@ class WebSocketClient:
         if msg["e"] == "INIT_STATE":
             await self.init_state(msg["d"])
         elif msg["e"] == "HOUSE_JOIN":
-            print(msg["d"].get("name"))
+            parsed_house = msg["d"]
+            for index, room in enumerate(parsed_house["rooms"]):
+                parsed_house["rooms"][index] = Room(room)
+
+            pprint(parsed_house)
 
     async def connect(self, token: str, bot: bool = True):
         """Connects to the Hiven WebSocket Swarm"""
