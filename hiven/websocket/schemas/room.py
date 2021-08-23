@@ -3,12 +3,12 @@ from .permission_override import PermissionOverride
 
 
 class Room:
-    type: int
-    position: int
-    name: str
-    last_message_id: str
     id: str
     house_id: str
+    type: int
     emoji: Emoji
+    name: str
+    position: int
+    last_message_id: str
     description: str
     default_permission_override: PermissionOverride
