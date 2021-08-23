@@ -22,9 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
+from .user import User
 from .role import Role
 from .room import Room
-from .user import User
 from .house import House
 from .entity import Entity
 from .member import Member
