@@ -1,3 +1,5 @@
+from typing import List
+
 from .room import Room
 from .member import Member
 
@@ -9,5 +11,5 @@ class House:
     owner_id: str
     banner: str
     default_permissions: int
-    members: list[Member]
-    rooms: list[Room]
+    members: List[Member]
+    rooms: List[Room]

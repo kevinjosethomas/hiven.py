@@ -1,4 +1,5 @@
-from datetime import date, datetime
+from typing import List
+from datetime import datetime
 
 from .user import User
 
@@ -8,7 +9,7 @@ class Member:
     user_id: str
     house_id: str
     user: User
-    roles: list[str]
+    roles: List[str]
     presence: str
     last_permission_update: datetime
     joined_at: datetime
