@@ -14,9 +14,22 @@ class WebSocketClient:
     async def init_state(self, data: dict):
         """Initialize bot's state"""
 
-        # pprint(data)
-
         self._client.user = User(data["user"])
+
+        asyncio.create_task(self.wait_for_cache(data))
+
+    async def wait_for_cache(self, data: dict):
+        """Waits till cache is loaded to set client as ready"""
+
+        while not self._client.is_ready:
+            if (
+                len(self._client.houses) == len(data.get("house_memberships", []))
+                and self._client.user
+            ):
+                self._client.is_ready = True
+                await self._client.dispatch_event("ready")
+            else:
+                await asyncio.sleep(0.1)
 
     async def server_websocket_handler(self, msg: dict):
         """Handles websocket messages that arrive from the server"""
