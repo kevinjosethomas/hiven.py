@@ -3,7 +3,7 @@ import asyncio
 import aiohttp
 from pprint import pprint
 
-from .types import User, House, Room
+from ..types import User, House
 
 
 class WebSocketClient:
