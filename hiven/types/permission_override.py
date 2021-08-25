@@ -1,4 +1,4 @@
-from ..schemas import PermissionOverride as PermissionOverrideSchema
+from hiven.schemas import PermissionOverride as PermissionOverrideSchema
 
 
 class PermissionOverride:

@@ -1,7 +1,7 @@
-from .room import Room
-from .member import Member
-from .entity import Entity
-from ..schemas import House as HouseSchema
+from hiven.types.room import Room
+from hiven.types.member import Member
+from hiven.types.entity import Entity
+from hiven.schemas import House as HouseSchema
 
 
 class House:

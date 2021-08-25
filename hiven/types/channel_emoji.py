@@ -1,4 +1,4 @@
-from ..schemas import ChannelEmoji as ChannelEmojiSchema
+from hiven.schemas import ChannelEmoji as ChannelEmojiSchema
 
 
 class ChannelEmoji:

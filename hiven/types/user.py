@@ -1,4 +1,4 @@
-from ..schemas import User as UserSchema
+from hiven.schemas import User as UserSchema
 
 
 class User:

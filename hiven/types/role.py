@@ -1,4 +1,4 @@
-from ..schemas import Role as RoleSchema
+from hiven.schemas import Role as RoleSchema
 
 
 class Role:

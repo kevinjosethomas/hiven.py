@@ -1,4 +1,4 @@
-from ..schemas import ResourcePointer as ResourcePointerSchema
+from hiven.schemas import ResourcePointer as ResourcePointerSchema
 
 
 class ResourcePointer:

@@ -1,6 +1,6 @@
 from typing import List
 
-from .resource_pointer import ResourcePointer
+from hiven.schemas.resource_pointer import ResourcePointer
 
 
 class Entity:

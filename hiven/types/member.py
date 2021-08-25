@@ -1,5 +1,5 @@
-from .user import User
-from ..schemas import Member as MemberSchema
+from hiven.types.user import User
+from hiven.schemas import Member as MemberSchema
 
 
 class Member:

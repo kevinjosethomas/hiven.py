@@ -3,8 +3,8 @@ import aiohttp
 import asyncio
 from typing import Coroutine
 
-from .errors import EventHandlerError
-from .websocket import WebSocketClient
+from hiven.errors import EventHandlerError
+from hiven.websocket import WebSocketClient
 
 
 AVAILABLE_EVENTS = ["ready"]
@@ -26,11 +26,15 @@ class Client:
         """Decorator to recognize a function as an event handler"""
 
         if not inspect.iscoroutinefunction(awaitable):
-            return TypeError(f"Expected a coroutine function, received {type(awaitable)}")
+            return TypeError(
+                f"Expected a coroutine function, received {type(awaitable)}"
+            )
 
         event_name = awaitable.__name__.replace("on_", "")
         if event_name not in AVAILABLE_EVENTS:
-            raise EventHandlerError(f"Invalid event handler name, received {event_name}")
+            raise EventHandlerError(
+                f"Invalid event handler name, received {event_name}"
+            )
 
         if self.event_handlers.get(event_name):
             self.event_handlers[event_name].append(awaitable)
@@ -39,18 +43,23 @@ class Client:
 
         return awaitable
 
-    async def dispatch_event(self, event: str, args: tuple = (), kwargs: dict = {}):
+    async def dispatch_event(
+        self, event: str, args: tuple = (), kwargs: dict = {}
+    ) -> None:
         """Dispatches the specified event with the provided arguments"""
 
         if self.event_handlers.get(event):
             handlers = [
-                event_handler(*args, **kwargs) for event_handler in self.event_handlers[event]
+                event_handler(*args, **kwargs)
+                for event_handler in self.event_handlers[event]
             ]
             await asyncio.gather(*handlers)
 
-    def run(self, token: str):
+    def run(self, token: str) -> None:
         """Runs the client with the provided token"""
 
         self._session = aiohttp.ClientSession()
         self._websocket = WebSocketClient(self._session, self)
-        self._loop.run_until_complete(self._websocket.connect(token=token, bot=self.bot))
+        self._loop.run_until_complete(
+            self._websocket.connect(token=token, bot=self.bot)
+        )
