@@ -13,7 +13,10 @@ AVAILABLE_EVENTS = ("ready", "message")
 class Client:
     def __init__(self, bot: bool = True):
         self.bot = bot
+
         self.is_ready = False
+        self._houses_len = 0
+
         self._loop = asyncio.get_event_loop()
 
         self.event_handlers = {}
