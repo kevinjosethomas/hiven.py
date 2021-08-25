@@ -7,7 +7,7 @@ from .errors import EventHandlerError
 from .websocket import WebSocketClient
 
 
-AVAILABLE_EVENTS = ("ready",)
+AVAILABLE_EVENTS = ("ready", "message")
 
 
 class Client:
