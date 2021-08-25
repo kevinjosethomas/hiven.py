@@ -4,7 +4,7 @@ import aiohttp
 from enum import IntEnum
 from pprint import pprint
 
-from ..types import User, House
+from ..types import User, House, Message
 
 
 class OpCodes(IntEnum):
@@ -44,7 +44,8 @@ class WebSocketClient:
             if len(self._client.houses) == self._client._houses_len:
                 self._houses_event.set()
         elif msg["e"] == "MESSAGE_CREATE":
-            print(msg["d"])
+            message = Message(msg["d"])
+            await self._client.dispatch_event("message", (message,))
 
     async def connect(self, token: str, bot: bool = True):
         """Connects to the Hiven WebSocket Swarm"""
