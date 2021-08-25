@@ -1,4 +1,7 @@
-class EventError(Exception):
+from .base import HivenError
+
+
+class EventError(HivenError):
     """Base class for event-related exceptions"""
 
     pass
