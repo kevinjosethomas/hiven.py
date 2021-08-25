@@ -11,25 +11,18 @@ class WebSocketClient:
         self._session = session
         self._client = client
 
+        self.houses_task = asyncio.Event()
+
     async def init_state(self, data: dict):
         """Initialize bot's state"""
 
         self._client.user = User(data["user"])
+        self._client._houses_len = len(data.get("house_memberships", []))
 
-        asyncio.create_task(self.wait_for_cache(data))
+        await self.houses_task.wait()
 
-    async def wait_for_cache(self, data: dict):
-        """Waits till cache is loaded to set client as ready"""
-
-        while not self._client.is_ready:
-            if (
-                len(self._client.houses) == len(data.get("house_memberships", []))
-                and self._client.user
-            ):
-                self._client.is_ready = True
-                await self._client.dispatch_event("ready")
-            else:
-                await asyncio.sleep(0.1)
+        self._client.is_ready = True
+        await self._client.dispatch_event("ready")
 
     async def server_websocket_handler(self, msg: dict):
         """Handles websocket messages that arrive from the server"""
@@ -37,9 +30,11 @@ class WebSocketClient:
         print(msg["e"])
 
         if msg["e"] == "INIT_STATE":
-            await self.init_state(msg["d"])
+            asyncio.create_task(self.init_state(msg["d"]))
         elif msg["e"] == "HOUSE_JOIN":
             self._client.houses.append(House(msg["d"]))
+            if len(self._client.houses) == self._client._houses_len:
+                self.houses_task.set()
 
     async def connect(self, token: str, bot: bool = True):
         """Connects to the Hiven WebSocket Swarm"""
