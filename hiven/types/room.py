@@ -1,7 +1,7 @@
-from .channel_emoji import ChannelEmoji
-from ..schemas import Room as RoomSchema
-from .permission_override import PermissionOverride
-from .default_permission_override import DefaultPermissionOverride
+from hiven.types.channel_emoji import ChannelEmoji
+from hiven.schemas import Room as RoomSchema
+from hiven.types.permission_override import PermissionOverride
+from hiven.types.default_permission_override import DefaultPermissionOverride
 
 
 class Room:

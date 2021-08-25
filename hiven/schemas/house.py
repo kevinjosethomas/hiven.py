@@ -1,9 +1,9 @@
 from typing import List
 
-from .role import Role
-from .room import Room
-from .entity import Entity
-from .member import Member
+from hiven.schemas.role import Role
+from hiven.schemas.room import Room
+from hiven.schemas.entity import Entity
+from hiven.schemas.member import Member
 
 
 class House:

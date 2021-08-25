@@ -1,5 +1,5 @@
-from ..schemas import Entity as EntitySchema
-from .resource_pointer import ResourcePointer
+from hiven.schemas import Entity as EntitySchema
+from hiven.types.resource_pointer import ResourcePointer
 
 
 class Entity:

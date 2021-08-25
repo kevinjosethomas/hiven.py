@@ -1,4 +1,4 @@
-from ..schemas import DefaultPermissionOverride as DefaultPermissionOverrideSchema
+from hiven.schemas import DefaultPermissionOverride as DefaultPermissionOverrideSchema
 
 
 class DefaultPermissionOverride:

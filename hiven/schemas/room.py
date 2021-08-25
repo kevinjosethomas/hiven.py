@@ -1,8 +1,8 @@
 from typing import Dict
 
-from .channel_emoji import ChannelEmoji
-from .permission_override import PermissionOverride
-from .default_permission_override import DefaultPermissionOverride
+from hiven.schemas.channel_emoji import ChannelEmoji
+from hiven.schemas.permission_override import PermissionOverride
+from hiven.schemas.default_permission_override import DefaultPermissionOverride
 
 
 class Room:

@@ -1,4 +1,4 @@
-from .base import HivenError
+from hiven.errors.base import HivenError
 
 
 class EventError(HivenError):

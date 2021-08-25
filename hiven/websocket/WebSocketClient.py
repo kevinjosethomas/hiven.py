@@ -1,9 +1,11 @@
 import json
 import asyncio
 import aiohttp
-from pprint import pprint
 
-from ..types import User, House
+from hiven.types import User, House
+import logging
+
+_LOGGER = logging.getLogger("hiven-websocket")
 
 
 class WebSocketClient:
@@ -27,7 +29,7 @@ class WebSocketClient:
     async def server_websocket_handler(self, msg: dict):
         """Handles websocket messages that arrive from the server"""
 
-        print(msg["e"])
+        logging.debug(msg["e"])
 
         if msg["e"] == "INIT_STATE":
             asyncio.create_task(self.init_state(msg["d"]))
@@ -61,6 +63,7 @@ class WebSocketClient:
             elif msg.type == aiohttp.WSMsgType.CLOSE:
                 print("closing")
                 print(msg)
+                break
             elif msg.type == aiohttp.WSMsgType.CLOSED:
                 print("closed")
                 print(msg)
@@ -75,6 +78,6 @@ class WebSocketClient:
         """Start sending heartbeat websocket messages at the specified interval"""
 
         while True:
-            print("sending heartbeat...")
+            logging.debug("sending heartbeat")
             await self._ws.send_json({"op": 3})
             await asyncio.sleep(interval)
