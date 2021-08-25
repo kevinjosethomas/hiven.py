@@ -43,6 +43,8 @@ class WebSocketClient:
             self._client.houses.append(House(msg["d"]))
             if len(self._client.houses) == self._client._houses_len:
                 self._houses_event.set()
+        elif msg["e"] == "MESSAGE_CREATE":
+            print(msg["d"])
 
     async def connect(self, token: str, bot: bool = True):
         """Connects to the Hiven WebSocket Swarm"""

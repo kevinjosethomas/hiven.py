@@ -28,6 +28,8 @@ from .room import Room
 from .house import House
 from .entity import Entity
 from .member import Member
+from .message import Message
+from .attachment import Attachment
 from .channel_emoji import ChannelEmoji
 from .resource_pointer import ResourcePointer
 from .permission_override import PermissionOverride
