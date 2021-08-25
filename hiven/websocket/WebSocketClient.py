@@ -1,9 +1,17 @@
 import json
 import asyncio
 import aiohttp
+from enum import IntEnum
 from pprint import pprint
 
 from ..types import User, House
+
+
+class OpCodes(IntEnum):
+    SERVER = 0
+    INIT = 1
+    LOGIN = 2
+    HEARTBEAT = 3
 
 
 class WebSocketClient:
@@ -51,11 +59,11 @@ class WebSocketClient:
 
                 message = json.loads(msg.data)
 
-                if message["op"] == 0:
+                if message["op"] == OpCodes.SERVER:
                     await self.server_websocket_handler(message)
-                elif message["op"] == 1:
+                elif message["op"] == OpCodes.INIT:
                     await self._ws.send_json(
-                        {"op": 2, "d": {"token": ("Bot " if bot else "") + self._token}}
+                        {"op": OpCodes.LOGIN, "d": {"token": ("Bot " if bot else "") + self._token}}
                     )
                     asyncio.create_task(self.heartbeat(message["d"]["hbt_int"] // 1000))
             elif msg.type == aiohttp.WSMsgType.CLOSE:
@@ -76,5 +84,5 @@ class WebSocketClient:
 
         while True:
             print("sending heartbeat...")
-            await self._ws.send_json({"op": 3})
+            await self._ws.send_json({"op": OpCodes.HEARTBEAT})
             await asyncio.sleep(interval)
