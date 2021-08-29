@@ -4,7 +4,7 @@ import asyncio
 from typing import Coroutine
 
 from hiven.errors import EventHandlerError
-from .websocket import WebSocketClient
+from hiven.gateway.websocket import WebSocketClient
 
 
 AVAILABLE_EVENTS = ("ready", "message")
