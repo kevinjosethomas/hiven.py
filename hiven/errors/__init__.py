@@ -22,5 +22,5 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-from .base import *
-from .event import *
+from hiven.errors.base import HivenError
+from hiven.errors.event import *
