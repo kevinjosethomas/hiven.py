@@ -19,7 +19,7 @@ class Client:
         self._logger = logging.getLogger("hiven")
 
         self.is_ready = False
-        self._houses_len = 0
+        self._expected_houses_len = None
 
         self.event_handlers = {}
         self.commands = {}

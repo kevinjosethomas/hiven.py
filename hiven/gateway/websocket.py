@@ -25,7 +25,7 @@ class WebSocketClient:
         """Initialize bot's state"""
 
         self._client.user = User(data["user"])
-        self._client._houses_len = len(data.get("house_memberships", []))
+        self._client._expected_houses_len = len(data.get("house_memberships", []))
 
         await self._houses_event.wait()
 
@@ -41,7 +41,7 @@ class WebSocketClient:
             asyncio.create_task(self.init_state(msg["d"]))
         elif msg["e"] == "HOUSE_JOIN":
             self._client.houses[msg["d"]["id"]] = House(msg["d"])
-            if len(self._client.houses) == self._client._houses_len:
+            if len(self._client.houses) == self._client._expected_houses_len:
                 self._houses_event.set()
         elif msg["e"] == "MESSAGE_CREATE":
             message = Message(msg["d"])
