@@ -23,3 +23,4 @@ SOFTWARE.
 """
 
 from hiven.client import Client
+from hiven.types import *
