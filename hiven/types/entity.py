@@ -1,5 +1,15 @@
-from ..schemas import Entity as EntitySchema
+from typing import List
+
 from .resource_pointer import ResourcePointer
+
+
+class EntitySchema:
+    id: str
+    house_id: str
+    name: str
+    position: int
+    type: int
+    resource_pointers: List[ResourcePointer]
 
 
 class Entity:

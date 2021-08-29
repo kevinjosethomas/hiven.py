@@ -1,4 +1,8 @@
-from ..schemas import PermissionOverride as PermissionOverrideSchema
+class PermissionOverrideSchema:
+    id: str
+    type: int
+    allow: int
+    deny: int
 
 
 class PermissionOverride:

@@ -1,9 +1,29 @@
-from ..schemas import Message
+from typing import List
+
+from .user import User
+from .member import Member
 from .attachment import Attachment
 
 
+class MessageSchema:
+    id: str
+    room_id: str
+    house_id: str
+    content: str
+    attachment: Attachment
+    mentions: List[User]
+    exploding: bool
+    exploding_age: int
+    member: Member
+    author_id: str
+    author: User
+    device_id: str
+    bucket: int
+    timestamp: int
+
+
 class Message:
-    def __init__(self, message: Message):
+    def __init__(self, message: MessageSchema):
         self.id = message.get("id")
         self.room_id = message.get("room_id")
         self.house_id = message.get("house_id")

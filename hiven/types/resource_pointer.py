@@ -1,4 +1,6 @@
-from ..schemas import ResourcePointer as ResourcePointerSchema
+class ResourcePointerSchema:
+    resource_id: str
+    resource_type: str
 
 
 class ResourcePointer:

@@ -1,5 +1,18 @@
+from typing import List
+from datetime import datetime
+
 from .user import User
-from ..schemas import Member as MemberSchema
+
+
+class MemberSchema:
+    id: str
+    user_id: str
+    house_id: str
+    user: User
+    roles: List[str]
+    presence: str
+    last_permission_update: datetime
+    joined_at: datetime
 
 
 class Member:

@@ -1,4 +1,6 @@
-from ..schemas import ChannelEmoji as ChannelEmojiSchema
+class ChannelEmojiSchema:
+    type: int
+    data: str
 
 
 class ChannelEmoji:

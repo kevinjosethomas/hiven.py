@@ -1,4 +1,6 @@
-from ..schemas import DefaultPermissionOverride as DefaultPermissionOverrideSchema
+class DefaultPermissionOverrideSchema:
+    allow: int
+    deny: int
 
 
 class DefaultPermissionOverride:
