@@ -25,7 +25,7 @@ class Client:
         self.commands = {}
 
         self.user = None
-        self.houses = []
+        self.houses = {}
 
     def event(self, awaitable: Coroutine):
         """Decorator to recognize a function as an event handler"""

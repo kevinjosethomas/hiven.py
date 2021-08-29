@@ -40,7 +40,7 @@ class WebSocketClient:
         if msg["e"] == "INIT_STATE":
             asyncio.create_task(self.init_state(msg["d"]))
         elif msg["e"] == "HOUSE_JOIN":
-            self._client.houses.append(House(msg["d"]))
+            self._client.houses[msg["d"]["id"]] = House(msg["d"])
             if len(self._client.houses) == self._client._houses_len:
                 self._houses_event.set()
         elif msg["e"] == "MESSAGE_CREATE":
