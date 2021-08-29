@@ -22,15 +22,15 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-from .user import User
-from .role import Role
-from .room import Room
-from .house import House
-from .entity import Entity
-from .member import Member
-from .message import Message
-from .attachment import Attachment
-from .channel_emoji import ChannelEmoji
-from .resource_pointer import ResourcePointer
-from .permission_override import PermissionOverride
-from .default_permission_override import DefaultPermissionOverride
+from hiven.types.user import User
+from hiven.types.role import Role
+from hiven.types.room import Room
+from hiven.types.house import House
+from hiven.types.entity import Entity
+from hiven.types.member import Member
+from hiven.types.message import Message
+from hiven.types.attachment import Attachment
+from hiven.types.channel_emoji import ChannelEmoji
+from hiven.types.resource_pointer import ResourcePointer
+from hiven.types.permission_override import PermissionOverride
+from hiven.types.default_permission_override import DefaultPermissionOverride
