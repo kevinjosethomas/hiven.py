@@ -1,5 +1,6 @@
 from typing import List
 
+from hiven.client import Client
 from hiven.types.role import Role
 from hiven.types.room import Room
 from hiven.types.member import Member
@@ -19,7 +20,7 @@ class HouseSchema:
 
 
 class House:
-    def __init__(self, house: HouseSchema):
+    def __init__(self, house: HouseSchema, client: Client):
         self.id = house.get("id")
         self.name = house.get("name")
         self.icon = house.get("icon")

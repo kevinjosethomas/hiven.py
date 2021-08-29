@@ -1,5 +1,6 @@
 from typing import Dict
 
+from hiven.client import Client
 from hiven.types.channel_emoji import ChannelEmoji
 from hiven.types.permission_override import PermissionOverride
 from hiven.types.default_permission_override import DefaultPermissionOverride
@@ -19,7 +20,7 @@ class RoomSchema:
 
 
 class Room:
-    def __init__(self, room: RoomSchema):
+    def __init__(self, room: RoomSchema, client: Client):
         self.id = room.get("id")
         self.house_id = room.get("house_id")
         self.type = room.get("type")

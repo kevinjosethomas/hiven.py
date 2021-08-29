@@ -1,3 +1,6 @@
+from hiven.client import Client
+
+
 class UserSchema:
     id: str
     username: str
@@ -12,7 +15,7 @@ class UserSchema:
 
 
 class User:
-    def __init__(self, user: UserSchema):
+    def __init__(self, user: UserSchema, client: Client):
         self.id = user.get("id")
         self.username = user.get("username")
         self.name = user.get("name")

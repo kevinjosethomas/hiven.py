@@ -1,5 +1,6 @@
 from typing import List
 
+from hiven.client import Client
 from hiven.types.user import User
 from hiven.types.member import Member
 from hiven.types.attachment import Attachment
@@ -23,7 +24,7 @@ class MessageSchema:
 
 
 class Message:
-    def __init__(self, message: MessageSchema):
+    def __init__(self, message: MessageSchema, client: Client):
         self.id = message.get("id")
         self.room_id = message.get("room_id")
         self.house_id = message.get("house_id")
