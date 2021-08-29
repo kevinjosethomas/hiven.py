@@ -1,6 +1,6 @@
 from typing import List
 
-from hiven.client import Client
+
 from hiven.types.user import User
 from hiven.types.member import Member
 from hiven.types.attachment import Attachment
@@ -24,19 +24,19 @@ class MessageSchema:
 
 
 class Message:
-    def __init__(self, message: MessageSchema, client: Client):
+    def __init__(self, message: MessageSchema, client):
         self.id = message.get("id")
         self.room_id = message.get("room_id")
         self.house_id = message.get("house_id")
         self.content = message.get("content")
         self.attachment = (
-            Attachment(message.get("attachment")) if message.get("attachment") else None
+            Attachment(message.get("attachment"), client) if message.get("attachment") else None
         )
         self.mentions = message.get("mentions")
         self.exploding = message.get("exploding")
         self.exploding_age = message.get("exploding_age")
-        self.member = Member(message.get("member"))
-        self.author_id = User(message.get("author_id"))
+        self.member = Member(message.get("member"), client)
+        self.author_id = User(message.get("author_id"), client)
         self.author = message.get("author")
         self.device_id = message.get("device_id")
         self.bucket = message.get("bucket")

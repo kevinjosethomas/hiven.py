@@ -1,6 +1,6 @@
 from typing import List
 
-from hiven.client import Client
+
 from hiven.types.resource_pointer import ResourcePointer
 
 
@@ -14,7 +14,7 @@ class EntitySchema:
 
 
 class Entity:
-    def __init__(self, entity: EntitySchema, client: Client):
+    def __init__(self, entity: EntitySchema, client):
         self.id = entity.get("id")
         self.house_id = entity.get("house_id")
         self.name = entity.get("name")
@@ -23,4 +23,4 @@ class Entity:
         self.resource_pointers = []
 
         for resource_pointer in entity["resource_pointers"]:
-            self.resource_pointers.append(ResourcePointer(resource_pointer))
+            self.resource_pointers.append(ResourcePointer(resource_pointer, client))

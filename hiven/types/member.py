@@ -1,7 +1,7 @@
 from typing import List
 from datetime import datetime
 
-from hiven.client import Client
+
 from hiven.types.user import User
 
 
@@ -17,11 +17,11 @@ class MemberSchema:
 
 
 class Member:
-    def __init__(self, member: MemberSchema, client: Client):
+    def __init__(self, member: MemberSchema, client):
         self.id = member.get("id")
         self.user_id = member.get("user_id")
         self.house_id = member.get("house_id")
-        self.user = User(member.get("user"))
+        self.user = User(member.get("user"), client)
         self.roles = member.get("roles")
         self.presence = member.get("presence")
         self.last_permission_update = member.get("last_permission_update")

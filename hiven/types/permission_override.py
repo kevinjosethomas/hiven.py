@@ -1,6 +1,3 @@
-from hiven.client import Client
-
-
 class PermissionOverrideSchema:
     id: str
     type: int
@@ -9,7 +6,7 @@ class PermissionOverrideSchema:
 
 
 class PermissionOverride:
-    def __init__(self, permission_override: PermissionOverrideSchema, client: Client):
+    def __init__(self, permission_override: PermissionOverrideSchema, client):
         self.id = permission_override.get("id")
         self.type = permission_override.get("type")
         self.allow = permission_override.get("allow")

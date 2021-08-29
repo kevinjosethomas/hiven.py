@@ -1,6 +1,3 @@
-from hiven.client import Client
-
-
 class RoleSchema:
     id: str
     house_id: str
@@ -13,7 +10,7 @@ class RoleSchema:
 
 
 class Role:
-    def __init__(self, role: RoleSchema, client: Client):
+    def __init__(self, role: RoleSchema, client):
         self.id = role.get("id")
         self.house_id = role.get("house_id")
         self.name = role.get("name")
