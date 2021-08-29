@@ -1,3 +1,4 @@
+from pprint import pprint
 from typing import List
 
 from .user import User
@@ -34,8 +35,8 @@ class Message:
         self.mentions = message.get("mentions")
         self.exploding = message.get("exploding")
         self.exploding_age = message.get("exploding_age")
-        self.member = message.get("member")
-        self.author_id = message.get("author_id")
+        self.member = Member(message.get("member"))
+        self.author_id = User(message.get("author_id"))
         self.author = message.get("author")
         self.device_id = message.get("device_id")
         self.bucket = message.get("bucket")
