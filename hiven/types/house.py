@@ -27,14 +27,14 @@ class House:
         self.banner = house.get("banner")
         self.default_permissions = house.get("default_permissions")
         self.members = []
-        self.rooms = []
+        self.rooms = {}
         self.entities = []
 
         for member in house["members"]:
             self.members.append(Member(member))
 
         for room in house["rooms"]:
-            self.rooms.append(Room(room))
+            self.rooms[room["id"]] = Room(room)
 
         for entity in house["entities"]:
             self.entities.append(Entity(entity))
