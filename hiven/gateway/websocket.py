@@ -2,9 +2,9 @@ import json
 import asyncio
 import aiohttp
 from enum import IntEnum
-from pprint import pprint
 
-from ..types import User, House, Message
+from hiven.types import User, House, Message
+from hiven.errors.websocket import WebSocketError
 
 
 class OpCodes(IntEnum):
@@ -69,23 +69,16 @@ class WebSocketClient:
                         {"op": OpCodes.LOGIN, "d": {"token": ("Bot " if bot else "") + self._token}}
                     )
                     asyncio.create_task(self.heartbeat(message["d"]["hbt_int"] // 1000))
-            elif msg.type == aiohttp.WSMsgType.CLOSE:
-                print("closing")
-                print(msg)
             elif msg.type == aiohttp.WSMsgType.CLOSED:
-                print("closed")
-                print(msg)
+                self._client._logger.debug("WebSocket connection was closed")
                 break
             elif msg.type == aiohttp.WSMsgType.ERROR:
-                print("error")
-                print(msg)
-                print("\n\n")
-                break
+                raise WebSocketError(msg)
 
     async def heartbeat(self, interval: int):
         """Start sending heartbeat websocket messages at the specified interval"""
 
         while True:
-            print("sending heartbeat...")
+            self._client._logger.debug("Sending heartbeat...")
             await self._ws.send_json({"op": OpCodes.HEARTBEAT})
             await asyncio.sleep(interval)

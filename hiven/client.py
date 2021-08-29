@@ -1,6 +1,7 @@
 import inspect
 import aiohttp
 import asyncio
+import logging
 from typing import Coroutine
 
 from hiven.errors import EventHandlerError
@@ -14,10 +15,11 @@ class Client:
     def __init__(self, bot: bool = True):
         self.bot = bot
 
+        self._loop = asyncio.get_event_loop()
+        self._logger = logging.getLogger("hiven")
+
         self.is_ready = False
         self._houses_len = 0
-
-        self._loop = asyncio.get_event_loop()
 
         self.event_handlers = {}
         self.commands = {}
