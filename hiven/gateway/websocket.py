@@ -35,7 +35,7 @@ class WebSocketClient:
     async def server_websocket_handler(self, msg: dict):
         """Handles websocket messages that arrive from the server"""
 
-        print(msg["e"])
+        self._client._logger.debug(f"Received event: {msg['e']}")
 
         if msg["e"] == "INIT_STATE":
             asyncio.create_task(self.init_state(msg["d"]))

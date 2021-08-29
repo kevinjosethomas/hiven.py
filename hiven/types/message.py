@@ -1,4 +1,3 @@
-from pprint import pprint
 from typing import List
 
 from hiven.types.user import User
