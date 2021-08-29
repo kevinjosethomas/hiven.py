@@ -3,7 +3,7 @@ import aiohttp
 import asyncio
 from typing import Coroutine
 
-from .errors import EventHandlerError
+from hiven.errors import EventHandlerError
 from .websocket import WebSocketClient
 
 
