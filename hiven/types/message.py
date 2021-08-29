@@ -1,9 +1,9 @@
 from pprint import pprint
 from typing import List
 
-from .user import User
-from .member import Member
-from .attachment import Attachment
+from hiven.types.user import User
+from hiven.types.member import Member
+from hiven.types.attachment import Attachment
 
 
 class MessageSchema:

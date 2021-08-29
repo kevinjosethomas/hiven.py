@@ -1,7 +1,7 @@
 from typing import List
 from datetime import datetime
 
-from .user import User
+from hiven.types.user import User
 
 
 class MemberSchema:
