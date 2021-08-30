@@ -7,6 +7,7 @@ pip install -U hiven.py
 ```
 
 ## Usage
+hiven.py is currently under development (that's going pretty fast), we have the basic receive + send message functionality for (jank) commands though!
 
 ### Quickstart
 ```
