@@ -3,6 +3,7 @@ import asyncio
 import aiohttp
 from enum import IntEnum
 
+from hiven.data import WEBSOCKET_URL
 from hiven.types import User, House, Message
 from hiven.errors.websocket import WebSocketError
 
@@ -51,9 +52,7 @@ class WebSocketClient:
         """Connects to the Hiven WebSocket Swarm"""
 
         self._token = token
-        self._ws = await self._session.ws_connect(
-            "wss://swarm.hiven.io/socket?encoding=json&compression=text_json"
-        )
+        self._ws = await self._session.ws_connect(WEBSOCKET_URL)
 
         while True:
             msg = await self._ws.receive()
