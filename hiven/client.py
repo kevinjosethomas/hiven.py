@@ -4,6 +4,7 @@ import asyncio
 import logging
 from typing import Coroutine
 
+from hiven.util import format_exception
 from hiven.errors import EventHandlerError
 from hiven.gateway import HTTPClient, WebSocketClient
 
@@ -51,7 +52,11 @@ class Client:
             handlers = [
                 event_handler(*args, **kwargs) for event_handler in self.event_handlers[event]
             ]
-            await asyncio.gather(*handlers)
+            results = await asyncio.gather(*handlers, return_exceptions=True)
+
+            for handler, result in zip(handlers, results):
+                if isinstance(result, Exception):
+                    self._logger.error(f"Exception occurred in {handler.__module__}.{handler.__qualname__}:\n{format_exception(result)}")
 
     def run(self, token: str):
         """Runs the client with the provided token"""
