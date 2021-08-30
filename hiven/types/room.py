@@ -21,6 +21,8 @@ class RoomSchema:
 
 class Room:
     def __init__(self, room: RoomSchema, client):
+        self._client = client
+
         self.id = room.get("id")
         self.house_id = room.get("house_id")
         self.type = room.get("type")
@@ -39,3 +41,12 @@ class Room:
         if room.get("permission_overrides"):
             for id, permission_override in room.get("permission_overrides").items():
                 self.permission_overrides[id] = PermissionOverride(permission_override, client)
+
+    async def send(self, message: str):
+        """Sends a message in the defined room"""
+
+        response, data = await self._client._http.request(
+            method="POST", endpoint=f"/rooms/{self.id}/messages", data={"content": message}
+        )
+
+        return True
