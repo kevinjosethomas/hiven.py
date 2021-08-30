@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "hiven.py"
+version = "0.0.3"
+description = "📦 Opensource Python wrapper for Hiven's HTTP and WebSocket API"
+authors = ["Kevin Thomas <kevin.jt2007@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/trustedmercury/hiven.py"
+packages = [
+  { include = "hiven" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+aiohttp = "^3.7.4"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
