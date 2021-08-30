@@ -5,7 +5,7 @@ import logging
 from typing import Coroutine
 
 from hiven.errors import EventHandlerError
-from hiven.gateway.websocket import WebSocketClient
+from hiven.gateway import HTTPClient, WebSocketClient
 
 
 AVAILABLE_EVENTS = ("ready", "message")
@@ -57,5 +57,6 @@ class Client:
         """Runs the client with the provided token"""
 
         self._session = aiohttp.ClientSession()
+        self._http = HTTPClient(self._session, self, token)
         self._websocket = WebSocketClient(self._session, self)
         self._loop.run_until_complete(self._websocket.connect(token=token, bot=self.bot))
