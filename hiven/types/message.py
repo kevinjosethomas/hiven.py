@@ -29,9 +29,7 @@ class Message:
         self.room_id = message.get("room_id")
         self.house_id = message.get("house_id")
         self.content = message.get("content")
-        self.attachment = (
-            Attachment(message.get("attachment"), client) if message.get("attachment") else None
-        )
+        self.attachment = Attachment(message.get("attachment"), client) if message.get("attachment") else None
         self.mentions = message.get("mentions")
         self.exploding = message.get("exploding")
         self.exploding_age = message.get("exploding_age")

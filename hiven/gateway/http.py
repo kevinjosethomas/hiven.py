@@ -13,11 +13,9 @@ class HTTPClient:
         """Sends a request with the provided information"""
 
         headers["Authorization"] = headers.get("Authorization", self._token)
-        headers["Content-Type"] =  headers.get("Content-Type", "application/json")
+        headers["Content-Type"] = headers.get("Content-Type", "application/json")
 
-        response = await self._session.request(
-            method=method, url=API_URL + endpoint, json=data, headers=headers
-        )
+        response = await self._session.request(method=method, url=API_URL + endpoint, json=data, headers=headers)
         response_data = await response.json()
 
         return response, response_data
