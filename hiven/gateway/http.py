@@ -9,17 +9,14 @@ class HTTPClient:
         self._client = client
         self._token = token
 
-    async def request(self, method: str, endpoint: str, data: dict, headers: dict):
+    async def request(self, method: str, endpoint: str, data: dict, headers: dict = {}):
         """Sends a request with the provided information"""
 
-        authorized_headers = {
-            "Authorization": self._token,
-            "Content-Type": "application/json",
-            **headers,
-        }
+        headers["Authorization"] = self._token if not headers.get("Authorization") else None
+        headers["Content-Type"] = "application/json" if not headers.get("Content-Type") else None
 
         response = await self._session.request(
-            method=method, url=API_URL + endpoint, data=data, headers=authorized_headers
+            method=method, url=API_URL + endpoint, json=data, headers=headers
         )
         response_data = await response.json()
 
