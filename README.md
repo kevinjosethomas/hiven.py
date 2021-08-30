@@ -9,6 +9,18 @@ pip install -U hiven.py
 ## Usage
 hiven.py is currently under development (that's going pretty fast), we have the basic receive + send message functionality for (jank) commands though!
 
+### Token
+Hiven currently only supports selfbots so you'll need to get your Hiven token from the web application or the desktop client.
+1. Open the web app or desktop client
+2. Hit ``Ctrl+Shift+I`` to open Developer Tools
+3. Navigate to the Console tab
+4. Type in ``localStorage["hiven-auth"]``
+5. Copy & paste the token in your code
+
+![image](https://user-images.githubusercontent.com/46242684/131377552-1faefc2e-9f1b-4b66-913a-37c29bb7246a.png)
+
+**Do not share this token with anybody**
+
 ### Quickstart
 ```
 import hiven
