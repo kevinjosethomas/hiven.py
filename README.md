@@ -22,7 +22,7 @@ Hiven currently only supports selfbots so you'll need to get your Hiven token fr
 **Do not share this token with anybody**
 
 ### Quickstart
-```
+```py
 import hiven
 from hiven import Client
 
