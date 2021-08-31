@@ -7,23 +7,23 @@ plugins:
 theme:
   name: material
   logo: assets/logo.svg
+  features:
+    - toc.integrate
+
+    - search.share
+    - search.suggest
+    - search.highlight
+
+    - navigation.top
+    - navigation.tabs
+    - navigation.expand
+    - navigation.instant
+    - navigation.sections
   icon:
     repo: fontawesome/brands/github
   markdown_extensions:
     - toc:
       permalink: true
-features:
-  - toc.integrate
-
-  - search.share
-  - search.suggest
-  - search.highlight
-
-  - navigation.top
-  - navigation.tabs
-  - navigation.expand
-  - navigation.instant
-  - navigation.sections
 extra_css:
   - stylesheets/palette.css
 extra:
