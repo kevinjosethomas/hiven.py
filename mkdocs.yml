@@ -1,0 +1,33 @@
+site_name: hiven.py
+repo_name: hiven.py
+repo_url: https://github.com/trustedmercury/hiven.py
+edit_uri: ""
+plugins:
+  - search
+theme:
+  name: material
+  logo: assets/logo.svg
+  icon:
+    repo: fontawesome/brands/github
+  markdown_extensions:
+    - toc:
+      permalink: true
+features:
+  - toc.integrate
+
+  - search.share
+  - search.suggest
+  - search.highlight
+
+  - navigation.top
+  - navigation.tabs
+  - navigation.expand
+  - navigation.instant
+  - navigation.sections
+extra_css:
+  - stylesheets/palette.css
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/trustedmercury/hiven.py
+      name: hiven.py - GitHub
