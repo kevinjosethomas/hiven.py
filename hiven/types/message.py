@@ -25,6 +25,8 @@ class MessageSchema:
 
 class Message:
     def __init__(self, message: MessageSchema, client):
+        self._client = client
+
         self.id = message.get("id")
         self.room_id = message.get("room_id")
         self.house_id = message.get("house_id")
@@ -42,3 +44,14 @@ class Message:
 
         self.house = client.houses.get(self.house_id)
         self.room = self.house.rooms.get(self.room_id) if self.house else None
+
+    async def delete(self):
+        """Deletes the defined message"""
+
+        response, data = await self._client._http.request(
+            method="DELETE", endpoint=f"/rooms/{self.room.id}/messages/{self.id}"
+        )
+
+        print(data)
+
+        return True
