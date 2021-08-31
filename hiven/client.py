@@ -49,14 +49,14 @@ class Client:
         """Dispatches the specified event with the provided arguments"""
 
         if self.event_handlers.get(event):
-            handlers = [
-                event_handler(*args, **kwargs) for event_handler in self.event_handlers[event]
-            ]
+            handlers = [event_handler(*args, **kwargs) for event_handler in self.event_handlers[event]]
             results = await asyncio.gather(*handlers, return_exceptions=True)
 
             for handler, result in zip(handlers, results):
                 if isinstance(result, Exception):
-                    self._logger.error(f"Exception occurred in {handler.__module__}.{handler.__qualname__}:\n{format_exception(result)}")
+                    self._logger.error(
+                        f"Exception occurred in {handler.__module__}.{handler.__qualname__}:\n{format_exception(result)}"
+                    )
 
     def run(self, token: str):
         """Runs the client with the provided token"""

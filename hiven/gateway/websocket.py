@@ -64,9 +64,7 @@ class WebSocketClient:
                 if message["op"] == OpCodes.SERVER:
                     await self.server_websocket_handler(message)
                 elif message["op"] == OpCodes.INIT:
-                    await self._ws.send_json(
-                        {"op": OpCodes.LOGIN, "d": {"token": ("Bot " if bot else "") + self._token}}
-                    )
+                    await self._ws.send_json({"op": OpCodes.LOGIN, "d": {"token": ("Bot " if bot else "") + self._token}})
                     asyncio.create_task(self.heartbeat(message["d"]["hbt_int"] // 1000))
             elif msg.type == aiohttp.WSMsgType.CLOSED:
                 self._client._logger.debug("WebSocket connection was closed")
