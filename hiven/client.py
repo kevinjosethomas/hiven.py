@@ -45,7 +45,7 @@ class Client:
 
         return awaitable
 
-    async def dispatch_event(self, event: str, args: tuple = (), kwargs: dict = {}):
+    async def dispatch_event(self, event: str, args: tuple = None, kwargs: dict = None):
         """Dispatches the specified event with the provided arguments"""
 
         if self.event_handlers.get(event):
