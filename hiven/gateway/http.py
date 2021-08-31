@@ -12,6 +12,8 @@ class HTTPClient:
     async def request(self, method: str, endpoint: str, data: dict = None, headers: dict = None):
         """Sends a request with the provided information"""
 
+        data = data if data else {}
+
         if not headers:
             headers = {"Authorization": self._token, "Content-Type": "application/json"}
         else:
