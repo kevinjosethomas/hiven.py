@@ -57,9 +57,7 @@ class Client:
 
             for handler, result in zip(handlers, results):
                 if isinstance(result, Exception):
-                    self._logger.error(
-                        f"Exception occurred in {handler.__qualname__}:\n{format_exception(result)}"
-                    )
+                    self._logger.error(f"Exception occurred in {handler.__qualname__}:\n{format_exception(result)}")
 
     def run(self, token: str):
         """Runs the client with the provided token"""
