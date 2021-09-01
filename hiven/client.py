@@ -45,8 +45,11 @@ class Client:
 
         return awaitable
 
-    async def dispatch_event(self, event: str, args: tuple = (), kwargs: dict = {}):
+    async def dispatch_event(self, event: str, args: tuple = None, kwargs: dict = None):
         """Dispatches the specified event with the provided arguments"""
+
+        args = args if args else ()
+        kwargs = kwargs if kwargs else {}
 
         if self.event_handlers.get(event):
             handlers = [event_handler(*args, **kwargs) for event_handler in self.event_handlers[event]]
@@ -54,9 +57,7 @@ class Client:
 
             for handler, result in zip(handlers, results):
                 if isinstance(result, Exception):
-                    self._logger.error(
-                        f"Exception occurred in {handler.__module__}.{handler.__qualname__}:\n{format_exception(result)}"
-                    )
+                    self._logger.error(f"Exception occurred in {handler.__qualname__}:\n{format_exception(result)}")
 
     def run(self, token: str):
         """Runs the client with the provided token"""
