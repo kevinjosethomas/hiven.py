@@ -21,6 +21,10 @@ class HTTPClient:
             headers["Content-Type"] = headers.get("Content-Type", "application/json")
 
         response = await self._session.request(method=method, url=API_URL + endpoint, json=data, headers=headers)
-        response_data = await response.json()
+
+        if response.status == 204:
+            response_data = None
+        else:
+            response_data = await response.json(content_type="application/json")
 
         return response, response_data

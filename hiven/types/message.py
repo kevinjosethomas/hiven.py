@@ -51,7 +51,3 @@ class Message:
         response, data = await self._client._http.request(
             method="DELETE", endpoint=f"/rooms/{self.room.id}/messages/{self.id}"
         )
-
-        print(data)
-
-        return True
