@@ -31,7 +31,7 @@ class WebSocketClient:
         await self._houses_event.wait()
 
         self._client.is_ready = True
-        await self._client.dispatch_event("ready")
+        await self._client._dispatch_event("ready")
 
     async def server_websocket_handler(self, msg: dict):
         """Handles websocket messages that arrive from the server"""
@@ -46,7 +46,8 @@ class WebSocketClient:
                 self._houses_event.set()
         elif msg["e"] == "MESSAGE_CREATE":
             message = Message(msg["d"], self._client)
-            await self._client.dispatch_event("message", (message,))
+            await self._client._dispatch_event("message", (message,))
+            await self._client._dispatch_command(message)
 
     async def connect(self, token: str, bot: bool = True):
         """Connects to the Hiven WebSocket Swarm"""
