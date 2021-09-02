@@ -23,3 +23,4 @@ SOFTWARE.
 """
 
 from hiven.core.command import Command
+from hiven.core.context import Context
