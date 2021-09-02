@@ -22,5 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-from hiven.client import Client
+from hiven.core import *
 from hiven.types import *
+from hiven.client import Client

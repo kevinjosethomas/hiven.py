@@ -1,14 +1,13 @@
-from hiven.errors.command import MissingRequiredArgument
 import inspect
 import aiohttp
 import asyncio
 import logging
 from typing import Coroutine, List
 
-from hiven.core import Command
+from hiven.core import Command, Context
 from hiven.util import format_exception
 from hiven.gateway import HTTPClient, WebSocketClient
-from hiven.errors import EventHandlerError, CommandAlreadyExists
+from hiven.errors import EventHandlerError, CommandAlreadyExists, MissingRequiredArgument
 
 AVAILABLE_EVENTS = ("ready", "message")
 
@@ -71,9 +70,9 @@ class Client:
 
         arguments = []
         signature = inspect.signature(awaitable)
-        for name, param in signature.parameters.items():
+        for argname, param in signature.parameters.items():
             annotation = param.annotation
-            arguments.append((name, annotation))
+            arguments.append((argname, annotation))
 
         command = Command(
             name=name, function=awaitable, arguments=arguments, description=description, usage=usage, aliases=aliases
@@ -127,7 +126,9 @@ class Client:
         if number_of_args - 1 > len(split_arguments):
             raise MissingRequiredArgument()
 
-        await command.function(*split_arguments[:number_of_args])
+        ctx = Context(message, self, self.prefix, command_name)
+
+        await command.function(ctx, *split_arguments[: number_of_args - 1])
 
     def run(self, token: str):
         """Runs the client with the provided token"""
