@@ -25,3 +25,4 @@ SOFTWARE.
 from hiven.errors.base import HivenError
 from hiven.errors.event import *
 from hiven.errors.websocket import *
+from hiven.errors.command import *
