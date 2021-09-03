@@ -40,3 +40,6 @@ class Boolean(Parser):
             return False
         else:
             raise ArgumentParsingError()
+
+
+TYPE_CONVERTERS = {str: String, int: Integer, bool: Boolean}
