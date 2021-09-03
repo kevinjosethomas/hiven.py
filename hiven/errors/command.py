@@ -17,3 +17,9 @@ class MissingRequiredArgument(CommandError):
     """Triggered when a required argument is missing on command execution"""
 
     pass
+
+
+class ArgumentParsingError(CommandError):
+    """Triggered when a command's argument cannot be parsed due to user input"""
+
+    pass
